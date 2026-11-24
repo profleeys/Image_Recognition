@@ -46,9 +46,9 @@ def groq_analyze_image(image, prompt):
     except Exception as e:
         return f"Groq API 錯誤: {str(e)}"
 
-st.title("Ollama-Groq視覺分析助手")
+st.title("Groq 視覺分析助手")
 
-api_choice = st.radio("選擇 API:", ["Groq"], horizontal=True)
+
 
 uploaded_file = st.file_uploader(
     "上傳圖檔",
@@ -69,7 +69,7 @@ if st.button("分析影像"):
         # 修正：這裡用 width (不是 use_container_width)
         col1.image(image, caption="已上傳的圖檔")
 
-        with st.spinner(f"使用 {api_choice} API 分析中..."):
+        with st.spinner("影像分析中，請稍候..."):
             result = groq_analyze_image(image, prompt)
 
         st.success("影像分析完成!")
